@@ -4,10 +4,16 @@ import { Provider } from 'react-redux'
 import React from 'react'
 import { renderToString } from 'react-dom/server'
 import reducer from '../client/reducer'
-import App from '../client/container/App'
+import App from '../src/container/App'
+import compress from 'koa-compress'
 
 const app = new Koa()
 const port = 3000
+
+app.use(compress({
+  threshold: 2048,
+  flush: require("zlib").Z_SYNC_FLUSH
+}))
 
 app.use(async (ctx, next) => {
   console.log('handle request')
