@@ -1,22 +1,28 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addTodo, completeTodo, setVisibilityFilter, VisibilityFilters } from '../action'
-import Todo from '../components/todo'
+import Layout1 from '../layout/Layout1'
+import Todo from '../component/todo'
+import {
+  addTodo,
+  completeTodo,
+  setVisibilityFilter,
+  VisibilityFilters
+} from '../action'
 
 class App extends Component {
-  render () {
+  render() {
     // Injected by connect() call:
     const { dispatch, visibleTodos, visibilityFilter } = this.props
     return (
-      <div>
+      <Layout1>
         hello world
         <Todo />
-      </div>
+      </Layout1>
     )
   }
 }
 
-function selectTodos (todos, filter) {
+function selectTodos(todos, filter) {
   switch (filter) {
     case VisibilityFilters.SHOW_ALL:
       return todos
@@ -29,7 +35,7 @@ function selectTodos (todos, filter) {
 
 // Which props do we want to inject, given the global state?
 // Note: use https://github.com/faassen/reselect for better performance.
-function select (state) {
+function select(state) {
   return {
     visibleTodos: selectTodos(state.todos, state.visibilityFilter),
     visibilityFilter: state.visibilityFilter
