@@ -8,6 +8,10 @@
     "server": "nodemon -L app/index.js",
     "start": "nodemon -L client/index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Boyceman/react-redux-isomorphic.git"
+  },
   "author": "boyceLau",
   "license": "ISC",
   "dependencies": {
